@@ -1,0 +1,16 @@
+jQuery Placeholder Plugin
+-------------------------
+
+This is a small jQuery plugin that emulates the placeholder attribute in web browsers that do not support it. If the browser does support it, the plugin does nothing.
+
+To use the plugin, add the JS and CSS files to your page and do the following:
+
+    jQuery(document).ready(function($) {
+        $(":input[placeholder]").placeholder();
+    });
+
+Then, in your HTML you can use the placeholder plugin as documented in the HTML5 spec:
+
+    <input type="search" placeholder="Search..." />
+
+For more information and some demos, see http://andrew-jones.com/jquery-placeholder-plugin
