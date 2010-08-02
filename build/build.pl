@@ -4,6 +4,12 @@ use strict;
 use warnings;
 use 5.010_000;
 use FindBin qw($Bin);
+use File::Util;
+use File::Copy;
+
+our $VERSION = "0.1";
+
+my $f = File::Util->new();
 
 given($ARGV[0]){
     when("minify"){
@@ -15,9 +21,10 @@ given($ARGV[0]){
         convert();
     }
     when("build"){
-        # do everything
+        # do everything and create a zip archive
         convert();
         minify();
+        build();
     }
     default{
         say "usage: $0 <minify|convert|build>";
@@ -82,5 +89,44 @@ sub convert {
         `sass $file $outfile`;
         
         say "$file > $outfile";
+    }
+}
+
+sub build {
+    my $tmp = "$Bin/tmp";
+    if( -d $tmp ){
+        remove_dir($tmp);
+    }
+    $f->make_dir("$tmp/jquery-placeholder-plugin/");
+    
+    my @files = qw(
+        index.htm
+        index-min.css
+        jquery-1.4.2.js
+        jquery-placeholder-plugin.css
+        jquery-placeholder-plugin-min.css
+        jquery-placeholder-plugin.js
+        jquery-placeholder-plugin-min.js
+    );
+    foreach my $file( @files ){
+        copy(
+            "$Bin/../src/$file",
+            "$tmp/jquery-placeholder-plugin/$file")
+        or die "Copy failed: $!";
+    }
+    
+    chdir $tmp;
+    `zip jquery-placeholder-plugin-$VERSION.zip jquery-placeholder-plugin/*`;
+}
+
+# remove directory and everything in it
+sub remove_dir {
+    my ($removedir) = @_;
+    my(@gonners) = $f->list_dir($removedir, '--follow');
+
+    my $a = '';
+    my $b = '';
+    foreach (reverse(sort({ length($a) <=> length($b) } @gonners)), $removedir) {
+      -d $_ ? rmdir($_) || die $! : unlink($_) || die $!;
     }
 }
