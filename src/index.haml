@@ -1,0 +1,67 @@
+=textbox_size='25'
+
+%html{ :xmlns => "http://www.w3.org/1999/xhtml", :lang => "en", "xml:lang" => "en"}
+  %head
+    %title jQuery Placeholder Plugin
+    %meta{"http-equiv" => "Content-Type", :content => "text/html; charset=utf-8"}
+    %link{:rel => "stylesheet", :href => "http://yui.yahooapis.com/2.7.0/build/reset-fonts-grids/reset-fonts-grids.css", :type => "text/css"}
+    %link{:rel => "stylesheet", :href => "index.css", :type => "text/css"}
+    %script{:type => "text/javascript", :src  => "jquery-1.4.2.js"}
+    %script{:type => "text/javascript", :src  => "jquery-placeholder-plugin.js"}
+    %link{:rel => "stylesheet", :href => "jquery-placeholder-plugin.css", :type => "text/css"}
+    :javascript
+        $(document).ready(function() {
+            $(":input[placeholder]").placeholder();
+        });
+  %body
+    %div{:id => "custom-doc", :class => "yui-t7"}
+      #hd
+        %h1 jQuery Placeholder Plugin
+      #bd
+        %div{:class => "yui-gc"}
+          %div{:class => "yui-u first"}
+            %p
+              This is a simple plugin for
+              %a{:href => "http://jquery.com"} jQuery 
+              that provides support for the
+              %a{:href => "http://dev.w3.org/html5/spec/Overview.html#the-placeholder-attribute"} HTML5 <code>placeholder</code>
+              attribute in browsers that do not already support it.
+            %p
+              To use it, simply add the plugins CSS and JS files to the page and use the following JS to initialise it:
+              %pre
+                :preserve
+                  $(document).ready(function() {
+                    $(":input[placeholder]").placeholder();
+                  });
+              Then in your HTML document, use the
+              %code placeholder
+              attribute with
+              %code input
+              tags. For example:
+              %pre
+                :escaped
+                  <input type='text' placeholder='Some placeholding text' />
+              If the browser already supports the
+              %code placeholder
+              attribute then the plugin will do nothing, unless you provide the
+              %code overrideSupport
+              option.
+            %p
+              You can get the code from
+              %a{:href => "http://github.com/andrewrjones/jquery-placeholder-plugin"} GitHub
+              or go to the plugins
+              %a{:href => "http://andrew-jones.com/jquery-placeholder-plugin"} homepage
+              for more information.
+          %div{:class => "yui-u"}
+            %h2 Examples
+            %h3 Text
+            %input{:name => "text-example", :type => "text", :placeholder => "Some placeholding text", :size => "#{textbox_size}"}
+            %h3 Password
+            %input{:name => "password-example", :type => "password", :placeholder => "Please enter your password", :size => "#{textbox_size}"}
+            %h3 Search
+            %input{:name => "search-example", :type => "search", :placeholder => "Do a search...", :size => "#{textbox_size}"}
+      #ft
+        %p
+          &copy;
+          %a{:href => "http://andrew-jones.com"} Andrew Jones
+          2010
