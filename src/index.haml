@@ -30,7 +30,7 @@
               To use it, simply add the plugins CSS and JS files to the page and use the following JS to initialise it:
               %pre
                 :preserve
-                  $(document).ready(function() {
+                  jQuery(document).ready(function($) {
                     $(":input[placeholder]").placeholder();
                   });
               Then in your HTML document, use the
