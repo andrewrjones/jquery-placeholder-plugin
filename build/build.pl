@@ -117,6 +117,7 @@ sub build {
     
     chdir $tmp;
     `zip jquery-placeholder-plugin-$VERSION.zip jquery-placeholder-plugin/*`;
+    say "created jquery-placeholder-plugin-$VERSION.zip";
 }
 
 # remove directory and everything in it
