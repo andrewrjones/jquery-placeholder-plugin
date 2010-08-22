@@ -10,8 +10,25 @@ use File::Copy;
 our $VERSION = "0.1";
 
 my $f = File::Util->new();
+my @args = @ARGV;
 
-given($ARGV[0]){
+# analytics for upload to http://andrew-jones.com/
+my $piwik = <<'PIWIK';
+<!-- Piwik -->
+<script type="text/javascript">
+var pkBaseURL = (("https:" == document.location.protocol) ? "https://analytics.andrew-jones.com/" : "http://analytics.andrew-jones.com/");
+document.write(unescape("%3Cscript src='" + pkBaseURL + "piwik.js' type='text/javascript'%3E%3C/script%3E"));
+</script><script type="text/javascript">
+try {
+var piwikTracker = Piwik.getTracker(pkBaseURL + "piwik.php", 3);
+piwikTracker.trackPageView();
+piwikTracker.enableLinkTracking();
+} catch( err ) {}
+</script><noscript><p><img src="http://analytics.andrew-jones.com/piwik.php?idsite=3" style="border:0" alt="" /></p></noscript>
+<!-- End Piwik Tag -->
+PIWIK
+
+given(shift @args){
     when("minify"){
         # minifies the js and css using CPAN modules
         minify();
@@ -27,7 +44,7 @@ given($ARGV[0]){
         build();
     }
     default{
-        say "usage: $0 <minify|convert|build>";
+        say "usage: $0 <minify|convert|build[--upload]>";
         exit(0);
     }
 }
@@ -93,6 +110,8 @@ sub convert {
 }
 
 sub build {
+    my $upload = grep(/^--upload$/, @args);
+    
     my $tmp = "$Bin/tmp";
     if( -d $tmp ){
         remove_dir($tmp);
@@ -113,6 +132,17 @@ sub build {
             "$Bin/../src/$file",
             "$tmp/jquery-placeholder-plugin/$file")
         or die "Copy failed: $!";
+    }
+    
+    # extra stuff for uploading to http://andrew-jones.com
+    if( $upload ){
+        my $index = "$tmp/jquery-placeholder-plugin/index.htm";
+        my($file) = $f->load_file($index);
+        
+        # add analytics
+        $file =~ s!</body>!$piwik</body>!g;
+        
+        $f->write_file('file' => $index, 'content' => $file, mode => 'trunc');
     }
     
     chdir $tmp;
