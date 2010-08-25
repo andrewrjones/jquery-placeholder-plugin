@@ -17,9 +17,23 @@
     font-weight: bold;
     font-size: 115%;
     padding-bottom: 4px;
+    padding-top: 4px;
   }
   h3 {
     font-size: 110%;
     padding: 8px 0 5px 0;
   }
+  p.option-description {
+    padding-left: 15px;
+  }
+  div.examples {
+    h2 {
+      padding-top: 0;
+    }
+  }
+}
+
+#ft {
+  margin-top: 12px;
+  font-size: 85%;
 }
