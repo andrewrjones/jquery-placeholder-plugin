@@ -44,7 +44,7 @@ given(shift @args){
         build();
     }
     default{
-        say "usage: $0 <minify|convert|build[--upload]>";
+        say "usage: $0 <minify|convert|build[--home]>";
         exit(0);
     }
 }
@@ -110,7 +110,7 @@ sub convert {
 }
 
 sub build {
-    my $upload = grep(/^--upload$/, @args);
+    my $home = grep(/^--home$/, @args);
     
     my $tmp = "$Bin/tmp";
     if( -d $tmp ){
@@ -135,7 +135,7 @@ sub build {
     }
     
     # extra stuff for uploading to http://andrew-jones.com
-    if( $upload ){
+    if( $home ){
         my $index = "$tmp/jquery-placeholder-plugin/index.htm";
         my($file) = $f->load_file($index);
         
