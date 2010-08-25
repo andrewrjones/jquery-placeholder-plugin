@@ -119,18 +119,22 @@ sub build {
     $f->make_dir("$tmp/jquery-placeholder-plugin/");
     
     my @files = qw(
-        index.htm
-        index-min.css
-        jquery-1.4.2.js
-        jquery-placeholder-plugin.css
-        jquery-placeholder-plugin-min.css
-        jquery-placeholder-plugin.js
-        jquery-placeholder-plugin-min.js
+        src/index.htm
+        src/index-min.css
+        src/jquery-1.4.2.js
+        src/jquery-placeholder-plugin.css
+        src/jquery-placeholder-plugin-min.css
+        src/jquery-placeholder-plugin.js
+        src/jquery-placeholder-plugin-min.js
+        README
+        LICENSE
     );
     foreach my $file( @files ){
+        my $to = $file;
+        $to =~ s!^src/!!;
         copy(
-            "$Bin/../src/$file",
-            "$tmp/jquery-placeholder-plugin/$file")
+            "$Bin/../$file",
+            "$tmp/jquery-placeholder-plugin/$to")
         or die "Copy failed: $!";
     }
     
