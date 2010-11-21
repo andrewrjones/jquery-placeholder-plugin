@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-  <title>Dirty Forms testing page</title>
+  <title>Placeholder testing page</title>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.3/jquery.min.js"></script>
   <script src="../src/jquery-placeholder-plugin.js" type="text/javascript"></script>
   <script type="text/javascript">
@@ -13,7 +13,10 @@
 
 		$('#getval').click(function(){
 			console.log('Test value is: ' + $('#test').val());
-			});
+		});
+		$('#changeval').click(function(){
+			$('#test').val('changed value');
+		});
 	  });
   </script>
   <style>
@@ -31,6 +34,7 @@
 		<input type="text" id="test" name="test" placeholder="http://" />
 		<input type="submit" id="submit" />
 		<input type="button" id="getval" value="Get Value" />
+		<input type="button" id="changeval" value="Change Value" />
  	</form>
 
 </body>

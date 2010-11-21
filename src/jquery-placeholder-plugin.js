@@ -18,12 +18,19 @@
 		// Replace the val function to never return placeholders
 		$.fn.plVal = $.fn.val;
 		$.fn.val = function(value) {
-			if(value != undefined)
-				return $(this).plVal(value);
-			
-
+		
 			if(this[0]) {
         		var el = $(this[0]);
+				if(value != undefined)
+				{
+					var currentValue = el.plVal();
+					var returnValue = $(this).plVal(value);
+					if(el.hasClass(opts.activeClass) && currentValue == el.attr('placeholder')){
+						el.removeClass(opts.activeClass);
+					}
+					return returnValue;
+				}
+
         		if(el.hasClass(opts.activeClass) && el.plVal() == el.attr('placeholder')) {
            			return '';
        			} else {
@@ -35,7 +42,6 @@
 		
 		// Clear placeholder values upon page reload
 		$(window).bind('beforeunload.placeholder', function() {
-			console.log('removing values');
 			$('input.' + opts.placeholderBlur).val('').attr('autocomplete','off');
 		});
 
@@ -52,7 +58,7 @@
                 return;
 			
 			// Prevent values from being reapplied on refresh
-			if(opts.preventRefreshIssues):
+			if(opts.preventRefreshIssues)
 				$el.attr('autocomplete','off');
 
             $el.bind('focus.placeholder', function(){
