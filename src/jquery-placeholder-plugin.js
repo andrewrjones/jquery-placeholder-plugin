@@ -10,7 +10,7 @@
 			debug : false,
 			log : function(msg){
 				if(!$.placeholder.debug) return;
-				msg = "[DirtyForms] " + msg;
+				msg = "[Placeholder] " + msg;
 				$.placeholder.hasFirebug ?
 				console.log(msg) :
 				$.placeholder.hasConsoleLog ?
