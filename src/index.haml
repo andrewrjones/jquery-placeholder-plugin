@@ -65,6 +65,15 @@
               %code placeholder
               attribute. Defaults to
               %code false
+            %h2 Using With Autofocus
+            %p
+              If you want the field to autofocus when the browser loads, you need to ensure that you apply the placeholder first, as follows:
+              :plain
+                <pre>// apply placeholders - must be applied first before any autofocus actions
+                $(":input[placeholder]").placeholder({ preventRefreshIssues: true });
+                // focus on the first text input field in the first field on the page
+                $("input[type='text']:first", document.forms[0]).focus().select();
+                </pre>
             %h2 The Code
             %p
               You can download the source code from
