@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<project name="jquery-placeholder-plugin" default="build" basedir=".">
+    <property name="VERSION" value="0.2" />
+    
+    <property name="BUILD_DIR" value="build" />
+    <property name="SOURCE_DIR" value="src" />
+    <property name="YUI_COMPRESSOR" value="/Users/ajones/bin/yuicompressor-2.4.2.jar" />
+
+    <target name="build" depends="clean, compile_haml, compile_scss, bundle_css, compress_css, bundle_javascript, compress_javascript, copy_misc_files, zip" />
+
+    <target name="compile_haml">
+        <echo>Compiling HTML Files From Haml...</echo>
+        <apply executable="haml" dest="${BUILD_DIR}">
+            <fileset dir="${SOURCE_DIR}" includes="*.haml"/>
+            <globmapper from="*.haml" to="*.htm"/>
+            <srcfile/>
+            <targetfile/>
+        </apply>
+        <echo>Haml Done</echo>
+    </target>
+
+    <target name="compile_scss">
+        <echo>Compiling CSS Files From SCSS...</echo>
+        <apply executable="sass" dest="${BUILD_DIR}">
+            <fileset dir="${SOURCE_DIR}" includes="*.scss"/>
+            <globmapper from="*.scss" to="*.css"/>
+            <srcfile/>
+            <targetfile/>
+        </apply>
+        <echo>Sass Done</echo>
+    </target>
+
+    <target name="bundle_css" depends="compile_scss">
+        <echo>Bundle CSS Files...</echo>
+        <concat destfile="${BUILD_DIR}/jquery-placeholder-plugin.css">
+            <filelist dir="${SOURCE_DIR}/" files="jquery-placeholder-plugin.css"/>
+        </concat>
+        <echo>CSS Bundles Done</echo>
+    </target>
+
+    <target name="compress_css" depends="bundle_css">
+        <echo>Compressing CSS Files...</echo>
+        <apply executable="java" parallel="false">
+            <fileset dir="${BUILD_DIR}/" includes="*.css"/>
+            <arg line="-jar"/>
+            <arg path="${YUI_COMPRESSOR}"/>
+            <srcfile/>
+            <arg line="-o"/>
+            <mapper type="glob" from="*.css" to="${BUILD_DIR}/*-min.css"/>
+            <targetfile/>
+        </apply>
+        <echo>JavaScript Compression Done</echo>
+    </target>
+
+    <target name="bundle_javascript">
+        <echo>Bundle JavaScript Files...</echo>
+        <concat destfile="${BUILD_DIR}/jquery-placeholder-plugin.js">
+            <filelist dir="${SOURCE_DIR}/" files="jquery-placeholder-plugin.js"/>
+        </concat>
+        <echo>JavaScript Bundles Done</echo>
+    </target>
+
+    <target name="compress_javascript" depends="bundle_javascript">
+        <echo>Compressing JavaScript Files...</echo>
+        <apply executable="java" parallel="false">
+            <fileset dir="${BUILD_DIR}/" includes="jquery-placeholder-plugin.js"/>
+            <arg line="-jar"/>
+            <arg path="${YUI_COMPRESSOR}"/>
+            <srcfile/>
+            <arg line="-o"/>
+            <mapper type="glob" from="*.js" to="${BUILD_DIR}/*-min.js"/>
+            <targetfile/>
+        </apply>
+        <echo>JavaScript Compression Done</echo>
+    </target>
+
+    <target name="copy_misc_files">
+        <echo>Copying Misc Files...</echo>
+        <copy todir="${BUILD_DIR}">
+            <fileset dir="." includes="LICENSE, README"/>
+        </copy>
+        <echo>Done</echo>
+    </target>
+    
+    <target name="zip">
+		<zip destfile="${BUILD_DIR}/${ant.project.name}-${VERSION}.zip">
+		    <zipfileset dir="${BUILD_DIR}" prefix="${ant.project.name}"/>
+		</zip>
+	</target>
+
+    <target name="clean">
+        <echo>Delete old build folder...</echo>
+        <delete dir="build"/>
+        <echo>Create new build folder...</echo>
+        <mkdir dir="${BUILD_DIR}"/>
+    </target>
+</project>
