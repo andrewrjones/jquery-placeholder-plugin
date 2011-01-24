@@ -78,7 +78,7 @@
     <target name="copy_misc_files">
         <echo>Copying Misc Files...</echo>
         <copy todir="${BUILD_DIR}">
-            <fileset dir="." includes="LICENSE, README"/>
+            <fileset dir="." includes="LICENSE, README, CHANGES"/>
         </copy>
         <echo>Done</echo>
     </target>
