@@ -45,7 +45,7 @@
 			}
 
 			if(el.hasClass($.placeholder.settings.activeClass) && el.plVal() == el.attr('placeholder')) {
-				$.placeholder.log('returning empty because its a placeholder');
+				$.placeholder.log('returning empty because it\'s a placeholder');
 				return '';
 			} else {
 				$.placeholder.log('returning original val');
