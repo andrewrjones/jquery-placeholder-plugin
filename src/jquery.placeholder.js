@@ -58,7 +58,7 @@
 
 	// Clear placeholder values upon page reload
 	$(window).bind('beforeunload.placeholder', function() {
-		var els = $('input.' + opts.activeClass);
+		var els = $('input.' + $.placeholder.settings.activeClass);
 		if(els.length > 0)
 			els.val('').attr('autocomplete','off');
 	});
