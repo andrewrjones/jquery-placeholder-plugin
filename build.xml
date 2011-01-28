@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 
 <project name="jquery-placeholder-plugin" default="build" basedir=".">
-    <property name="VERSION" value="0.2" />
+    <property name="VERSION" value="0.3" />
     
     <property name="BUILD_DIR" value="build" />
     <property name="SOURCE_DIR" value="src" />
@@ -33,8 +33,8 @@
 
     <target name="bundle_css" depends="compile_scss">
         <echo>Bundle CSS Files...</echo>
-        <concat destfile="${BUILD_DIR}/jquery-placeholder-plugin.css">
-            <filelist dir="${SOURCE_DIR}/" files="jquery-placeholder-plugin.css"/>
+        <concat destfile="${BUILD_DIR}/jquery.placeholder.css">
+            <filelist dir="${SOURCE_DIR}/" files="jquery.placeholder.css"/>
         </concat>
         <echo>CSS Bundles Done</echo>
     </target>
@@ -55,8 +55,8 @@
 
     <target name="bundle_javascript">
         <echo>Bundle JavaScript Files...</echo>
-        <concat destfile="${BUILD_DIR}/jquery-placeholder-plugin.js">
-            <filelist dir="${SOURCE_DIR}/" files="jquery-placeholder-plugin.js"/>
+        <concat destfile="${BUILD_DIR}/jquery.placeholder.js">
+            <filelist dir="${SOURCE_DIR}/" files="jquery.placeholder.js"/>
         </concat>
         <echo>JavaScript Bundles Done</echo>
     </target>
@@ -64,7 +64,7 @@
     <target name="compress_javascript" depends="bundle_javascript">
         <echo>Compressing JavaScript Files...</echo>
         <apply executable="java" parallel="false">
-            <fileset dir="${BUILD_DIR}/" includes="jquery-placeholder-plugin.js"/>
+            <fileset dir="${BUILD_DIR}/" includes="jquery.placeholder.js"/>
             <arg line="-jar"/>
             <arg path="${YUI_COMPRESSOR}"/>
             <srcfile/>

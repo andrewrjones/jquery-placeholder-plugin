@@ -5,8 +5,8 @@
     %link{:rel => "stylesheet", :href => "http://yui.yahooapis.com/2.7.0/build/reset-fonts-grids/reset-fonts-grids.css", :type => "text/css"}
     %link{:rel => "stylesheet", :href => "index-min.css", :type => "text/css"}
     %script{:type => "text/javascript", :src  => "http://code.jquery.com/jquery-1.4.4.min.js"}
-    %script{:type => "text/javascript", :src  => "jquery-placeholder-plugin.js"}
-    %link{:rel => "stylesheet", :href => "jquery-placeholder-plugin.css", :type => "text/css"}
+    %script{:type => "text/javascript", :src  => "jquery.placeholder.js"}
+    %link{:rel => "stylesheet", :href => "jquery.placeholder.css", :type => "text/css"}
     :javascript
         jQuery(document).ready(function($) {
             $(":input[placeholder]").placeholder();
@@ -49,11 +49,11 @@
             %h2 Options
             %p
               The following options can be passed to the plugin.
-            %h3 blurClass
+            %h3 activeClass
             %p{:class => "option-description"}
               The class to apply when input is blurred. Defaults to
-              %code placeholderBlur
-            %h3 activeClass
+              %code placeholder
+            %h3 focusClass
             %p{:class => "option-description"}
               The class to apply when input is active. Defaults to
               %code placeholderFocus
@@ -65,12 +65,18 @@
               %code placeholder
               attribute. Defaults to
               %code false
+            %h3 preventRefreshIssues
+            %p{:class => "option-description"}
+              Optionally attempt to prevent Firefox from auto filling values on refresh, by turning
+              %code autocomplete
+              off. Defaults to
+              %code true
             %h2 Using With Autofocus
             %p
               If you want the field to autofocus when the browser loads, you need to ensure that you apply the placeholder first, as follows:
               :plain
                 <pre>// apply placeholders - must be applied first before any autofocus actions
-                $(":input[placeholder]").placeholder({ preventRefreshIssues: true });
+                $(":input[placeholder]").placeholder();
                 // focus on the first text input field in the first field on the page
                 $("input[type='text']:first", document.forms[0]).focus().select();
                 </pre>
@@ -89,6 +95,11 @@
               Please use the
               %a{:href => "http://github.com/andrewrjones/jquery-placeholder-plugin/issues" } GitHub issues tracker
               for any bugs or issues.
+            %h2 Acknowledgements
+            %p
+              Thanks to
+              %a{:href => "http://mal.co.nz" } Mal Curtis
+              for many bug fixes and enhancements. Has probably writting more of the code than I have ;-)
             %h2 License
             %p
               This code is available under the MIT License. See the

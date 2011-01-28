@@ -1,7 +1,22 @@
+0.3 28-01-2011
+This release brings in Mal Curtis' work from https://github.com/snikch/jquery-placeholder-plugin/. Each of the changes in this version are attributed to him (which means he has probably wrote more of the code than I have ;-)
+
+  [Setting Changes]
+  - 'blurClass' has been renamed to 'activeClass'
+  - 'activeClass' has been renamed to 'focusClass'
+  
+  [Enhancements]
+  - 'preventRefreshIssues' optional setting added to prevent Firefox from auto filling values on refresh, by turning autocomplete off. Defaults to true
+  
+  [Bug Fixes]
+  - If the value is actually set to the same as the placeholder, it's still considered a placeholder
+  - Refresh in firefox pre fills the input field with the placeholder
+  - Val() function returns the placeholder, not an empty string
+  - Submitting a form would submit the placeholder value
+  - Changing the value of an element with a placeholder via val('string') will removed the placeholder class
+
 0.2 24-01-2011
   - Doc updates
-  - Use ant to build
-  - No code changes
 
 0.1 25-08-2010
   - Inital version
