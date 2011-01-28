@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 
 <project name="jquery-placeholder-plugin" default="build" basedir=".">
-    <property name="VERSION" value="0.3" />
+    <property name="VERSION" value="0.4" />
     
     <property name="BUILD_DIR" value="build" />
     <property name="SOURCE_DIR" value="src" />
@@ -47,7 +47,7 @@
             <arg path="${YUI_COMPRESSOR}"/>
             <srcfile/>
             <arg line="-o"/>
-            <mapper type="glob" from="*.css" to="${BUILD_DIR}/*-min.css"/>
+            <mapper type="glob" from="*.css" to="${BUILD_DIR}/*.min.css"/>
             <targetfile/>
         </apply>
         <echo>JavaScript Compression Done</echo>
@@ -69,7 +69,7 @@
             <arg path="${YUI_COMPRESSOR}"/>
             <srcfile/>
             <arg line="-o"/>
-            <mapper type="glob" from="*.js" to="${BUILD_DIR}/*-min.js"/>
+            <mapper type="glob" from="*.js" to="${BUILD_DIR}/*.min.js"/>
             <targetfile/>
         </apply>
         <echo>JavaScript Compression Done</echo>
