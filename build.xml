@@ -3,9 +3,10 @@
 <project name="jquery-placeholder-plugin" default="build" basedir=".">
     <property name="VERSION" value="0.4" />
     
+    <property environment="env"/>
     <property name="BUILD_DIR" value="build" />
     <property name="SOURCE_DIR" value="src" />
-    <property name="YUI_COMPRESSOR" value="/Users/ajones/bin/yuicompressor-2.4.2.jar" />
+    <property name="YUI_COMPRESSOR" value="${env.YUI_COMPRESSOR}" />
 
     <target name="build" depends="clean, compile_haml, compile_scss, bundle_css, compress_css, bundle_javascript, compress_javascript, copy_misc_files, zip" />
 
