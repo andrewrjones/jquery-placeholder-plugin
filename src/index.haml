@@ -1,46 +1,59 @@
+!!! 5
 %html{ :xmlns => "http://www.w3.org/1999/xhtml", :lang => "en", "xml:lang" => "en"}
   %head
     %title jQuery Placeholder Plugin
     %meta{"http-equiv" => "Content-Type", :content => "text/html; charset=utf-8"}
-    %link{:rel => "stylesheet", :href => "http://yui.yahooapis.com/2.7.0/build/reset-fonts-grids/reset-fonts-grids.css", :type => "text/css"}
+    %meta{:name => "description", :content => "jQuery plugin that adds support for the placeholder attribute in all browsers"}
+    %meta{:name => "author", :content => "Andrew Jones, http://andrew-jones.com"}
+    /[if lt IE 9]
+      %script{:type => "text/javascript", :src  => "http://html5shim.googlecode.com/svn/trunk/html5.js"}
+    %link{:rel => "stylesheet", :href => "bootstrap.min.css", :type => "text/css"}
     %link{:rel => "stylesheet", :href => "index.min.css", :type => "text/css"}
     %script{:type => "text/javascript", :src  => "http://code.jquery.com/jquery-1.4.4.min.js"}
     %script{:type => "text/javascript", :src  => "jquery.placeholder.js"}
     %link{:rel => "stylesheet", :href => "jquery.placeholder.css", :type => "text/css"}
+    %script{:type => "text/javascript", :src  => "http://google-code-prettify.googlecode.com/svn/trunk/src/prettify.js"}
+    %link{:rel => "stylesheet", :href => "http://google-code-prettify.googlecode.com/svn/trunk/src/prettify.css", :type => "text/css"}
     :javascript
         jQuery(document).ready(function($) {
+            try {
+                prettyPrint();
+            } catch(err) {}
+            
             $(":input[placeholder]").placeholder();
         });
   %body
     :plain
       <a href="http://github.com/andrewrjones/jquery-placeholder-plugin/"><img style="position: absolute; top: 0; right: 0; border: 0;" src="http://s3.amazonaws.com/github/ribbons/forkme_right_green_007200.png" alt="Fork me on GitHub" /></a>
-    %div{:id => "custom-doc", :class => "yui-t7"}
-      #hd
-        %h1 jQuery Placeholder Plugin
-      #bd
-        %div{:class => "yui-gc"}
-          %div{:class => "yui-u first"}
+    %div{:class => "container"}
+      %div{:class => "content"}
+        %div{:class => "page-header"}
+          %h1 jQuery Placeholder Plugin
+        %div{:class => "row"}
+          %div{:class => "span10"}
             %p
               This is a simple plugin for
-              %a{:href => "http://jquery.com"} jQuery 
+              %a{:href => "http://jquery.com", :title => "jQuery"} jQuery 
               that provides support for the
-              %a{:href => "http://dev.w3.org/html5/spec/Overview.html#the-placeholder-attribute"} HTML5 <code>placeholder</code>
+              %a{:href => "http://dev.w3.org/html5/spec/Overview.html#the-placeholder-attribute", :title => "HTML5 placeholder"} HTML5 <code>placeholder</code>
               attribute in browsers that do not already support it.
             %p
               To use it, simply add the plugins CSS and JS files to the page and use the following JS to initialise it:
-              %pre
-                :preserve
-                  jQuery(document).ready(function($) {
-                    $(":input[placeholder]").placeholder();
-                  });
+            %pre{:class => "prettyprint language-js"}
+              :preserve
+                jQuery(document).ready(function($) {
+                  $(":input[placeholder]").placeholder();
+                });
+            %p
               Then in your HTML document, use the
               %code placeholder
               attribute with
               %code input
               tags. For example:
-              %pre
-                :escaped
-                  <input type='text' placeholder='Some placeholding text' />
+            %pre{:class => "prettyprint language-html"}
+              :escaped
+                <input type='text' placeholder='Some placeholding text' />
+            %p
               If the browser already supports the
               %code placeholder
               attribute then the plugin will do nothing, unless you provide the
@@ -75,53 +88,52 @@
             %p
               If you want the field to autofocus when the browser loads, you need to ensure that you apply the placeholder first, as follows:
               :plain
-                <pre>// apply placeholders - must be applied first before any autofocus actions
+                <pre class="prettyprint language-js">// apply placeholders - must be applied first before any autofocus actions
                 $(":input[placeholder]").placeholder();
                 // focus on the first text input field in the first field on the page
                 $("input[type='text']:first", document.forms[0]).focus().select();
                 </pre>
               Thanks to
-              %a{:href => "https://github.com/hostdude99"} hostdude99
+              %a{:href => "https://github.com/hostdude99", :title => "hostdude99"} hostdude99
               for the hint.
             %h2 The Code
             %p
               You can download the source code from
-              %a{:href => "http://github.com/andrewrjones/jquery-placeholder-plugin/downloads"} GitHub
+              %a{:href => "http://github.com/andrewrjones/jquery-placeholder-plugin/downloads", :title => "downloads"} GitHub
               or go to the plugins
-              %a{:href => "http://andrew-jones.com/jquery-placeholder-plugin"} homepage
+              %a{:href => "http://andrew-jones.com/jquery-placeholder-plugin", :title => "jQuery Placeholder Plugin"} homepage
               for more information
             %h2 Support
             %p
               Please use the
-              %a{:href => "http://github.com/andrewrjones/jquery-placeholder-plugin/issues" } GitHub issues tracker
+              %a{:href => "http://github.com/andrewrjones/jquery-placeholder-plugin/issues", :title => "issues" } GitHub issues tracker
               for any bugs or issues.
             %h2 Acknowledgements
             %p
               Thanks to
-              %a{:href => "http://mal.co.nz" } Mal Curtis
+              %a{:href => "http://mal.co.nz", :title => "Mal Curtis" } Mal Curtis
               for many bug fixes and enhancements. Has probably writting more of the code than I have ;-)
             %h2 License
             %p
               This code is available under the MIT License. See the
-              %a{:href => "LICENSE" } LICENSE
+              %a{:href => "LICENSE", :title => "MIT license" } LICENSE
               file for more details.
-          %div{:class => ["yui-u"]}
-            %div{:class => ["examples"]}
-              %h2 Examples
-              %h3 Text
-              %input{:name => "text-example", :type => "text", :placeholder => "Some placeholding text", :size => "25"}
-              %h3 Search
-              %input{:name => "search-example", :type => "search", :placeholder => "Do a search...", :size => "25"}
-              %h3 Email
-              %input{:name => "email-example", :type => "email", :placeholder => "Please enter an email address", :size => "25"}
-              %h3 URL
-              %input{:name => "url-example", :type => "url", :placeholder => "Please enter a URL", :size => "25"}
+          %div{:class => ["span4"]}
+            %h2 Examples
+            %h3 Text
+            %input{:name => "text-example", :type => "text", :placeholder => "Some placeholding text", :size => "25"}
+            %h3 Search
+            %input{:name => "search-example", :type => "search", :placeholder => "Do a search...", :size => "25"}
+            %h3 Email
+            %input{:name => "email-example", :type => "email", :placeholder => "Please enter an email address", :size => "25"}
+            %h3 URL
+            %input{:name => "url-example", :type => "url", :placeholder => "Please enter a URL", :size => "25"}
             %div{:class => ["html5-logo"]}
               :plain
                 <a href="http://www.w3.org/html/logo/">
                 <img src="http://www.w3.org/html/logo/badge/html5-badge-h-semantics.png" width="133" height="64" alt="HTML5 Powered with Semantics" title="HTML5 Powered with Semantics">
                 </a>
-      #ft
+      %footer
         %p
-          &copy; 2010 - 2011
+          &copy; 2012
           %a{:href => "http://andrew-jones.com"} Andrew Jones

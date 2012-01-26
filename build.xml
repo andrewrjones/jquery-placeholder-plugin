@@ -8,7 +8,7 @@
     <property name="SOURCE_DIR" value="src" />
     <property name="YUI_COMPRESSOR" value="${env.YUI_COMPRESSOR}" />
 
-    <target name="build" depends="clean, compile_haml, compile_scss, bundle_css, compress_css, bundle_javascript, compress_javascript, copy_misc_files, zip" />
+    <target name="build" depends="clean, compile_haml, compile_scss, copy_bootstrap, bundle_css, compress_css, bundle_javascript, compress_javascript, copy_misc_files, zip" />
 
     <target name="compile_haml">
         <echo>Compiling HTML Files From Haml...</echo>
@@ -30,6 +30,14 @@
             <targetfile/>
         </apply>
         <echo>Sass Done</echo>
+    </target>
+    
+    <target name="copy_bootstrap">
+        <echo>Copying Bootstrap...</echo>
+        <concat destfile="${BUILD_DIR}/bootstrap.min.css">
+            <filelist dir="ext/bootstrap" files="bootstrap.min.css"/>
+        </concat>
+        <echo>Bootstrap Done</echo>
     </target>
 
     <target name="bundle_css" depends="compile_scss">
