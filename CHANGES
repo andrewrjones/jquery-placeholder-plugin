@@ -1,6 +1,9 @@
+0.5 31-01-2012
+  - Update docs
+
 0.4 28-01-2011
-- Rename files to be consistent with other jQuery plugins.
-  Eg: jquery-placeholder-plugin-min.js to jquery.placeholder.min.js
+  - Rename files to be consistent with other jQuery plugins.
+    Eg: jquery-placeholder-plugin-min.js to jquery.placeholder.min.js
 
 0.3 28-01-2011
 This release brings in Mal Curtis' work from https://github.com/snikch/jquery-placeholder-plugin/. Each of the changes in this version are attributed to him (which means he has probably wrote more of the code than I have ;-)

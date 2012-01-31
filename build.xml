@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 
 <project name="jquery-placeholder-plugin" default="build" basedir=".">
-    <property name="VERSION" value="0.4" />
+    <property name="VERSION" value="0.5" />
     
     <property environment="env"/>
     <property name="BUILD_DIR" value="build" />
@@ -51,7 +51,7 @@
     <target name="compress_css" depends="bundle_css">
         <echo>Compressing CSS Files...</echo>
         <apply executable="java" parallel="false">
-            <fileset dir="${BUILD_DIR}/" includes="*.css"/>
+            <fileset dir="${BUILD_DIR}/" includes="*.css" excludes="bootstrap.min.css"/>
             <arg line="-jar"/>
             <arg path="${YUI_COMPRESSOR}"/>
             <srcfile/>
