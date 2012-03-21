@@ -8,11 +8,17 @@
     <property name="SOURCE_DIR" value="src" />
     <property name="YUI_COMPRESSOR" value="${env.YUI_COMPRESSOR}" />
 
-    <target name="build" depends="clean, compile_haml, compile_scss, copy_bootstrap, bundle_css, compress_css, bundle_javascript, compress_javascript, copy_misc_files, zip" />
+    <target name="build" depends="compile_haml, compile_scss, copy_bootstrap, bundle_css, compress_css, bundle_javascript, compress_javascript, copy_misc_files, zip" />
 
     <target name="compile_haml">
         <echo>Compiling HTML Files From Haml...</echo>
-        <apply executable="haml" dest="${BUILD_DIR}">
+        <apply executable="haml.bat" dest="${BUILD_DIR}" osfamily="Windows">
+            <fileset dir="${SOURCE_DIR}" includes="*.haml"/>
+            <globmapper from="*.haml" to="*.htm"/>
+            <srcfile/>
+            <targetfile/>
+        </apply>
+        <apply executable="haml" dest="${BUILD_DIR}" osfamily="Unix">
             <fileset dir="${SOURCE_DIR}" includes="*.haml"/>
             <globmapper from="*.haml" to="*.htm"/>
             <srcfile/>
@@ -23,7 +29,13 @@
 
     <target name="compile_scss">
         <echo>Compiling CSS Files From SCSS...</echo>
-        <apply executable="sass" dest="${BUILD_DIR}">
+        <apply executable="sass.bat" dest="${BUILD_DIR}" osfamily="Windows">
+            <fileset dir="${SOURCE_DIR}" includes="*.scss"/>
+            <globmapper from="*.scss" to="*.css"/>
+            <srcfile/>
+            <targetfile/>
+        </apply>
+        <apply executable="sass" dest="${BUILD_DIR}" osfamily="Unix">
             <fileset dir="${SOURCE_DIR}" includes="*.scss"/>
             <globmapper from="*.scss" to="*.css"/>
             <srcfile/>
