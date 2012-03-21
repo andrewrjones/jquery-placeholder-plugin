@@ -113,7 +113,7 @@
 
     <target name="clean">
         <echo>Delete old build folder...</echo>
-        <delete dir="build"/>
+        <delete dir="${BUILD_DIR}"/>
         <echo>Create new build folder...</echo>
         <mkdir dir="${BUILD_DIR}"/>
     </target>
