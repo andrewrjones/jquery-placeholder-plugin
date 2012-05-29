@@ -27,7 +27,8 @@
   },
   "devDependencies": {
     "grunt": "~0.3",
-    "grunt-haml": "~0.1"
+    "grunt-haml": "~0.1",
+    "grunt-less": "*"
   },
   "keywords": []
 }
