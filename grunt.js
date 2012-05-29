@@ -25,10 +25,16 @@ module.exports = function(grunt) {
       dist: {
         src: ['<banner>', '<config:concat.dist.dest>'],
         dest: 'dist/<%= pkg.name %>.min.js'
-      },
-      distcss: {
-        src: ['<banner>', '<config:concat.dist.dest>'],
+      }
+    },
+    cssmin: {
+      dist: {
+        src: ['<config:concat.distcss.dest>'],
         dest: 'dist/<%= pkg.name %>.min.css'
+      },
+      docs: {
+        src: ['<config:less.index.dest>'],
+        dest: 'dist/index.min.css'
       }
     },
     /*haml: {
@@ -48,6 +54,9 @@ module.exports = function(grunt) {
     //},
     lint: {
       files: ['grunt.js', 'src/**/*.js', 'test/**/*.js']
+    },
+    csslint: {
+      files: ['src/**/*.css']
     },
     /*watch: {
       files: '<config:lint.files>',
@@ -75,11 +84,12 @@ module.exports = function(grunt) {
   });
 
   // Default task.
-  grunt.registerTask('default', 'lint concat min');
+  grunt.registerTask('default', 'csslint');
   
-  grunt.registerTask('dist', 'default haml less copy');
+  grunt.registerTask('dist', 'default haml less concat min cssmin copy');
 
   grunt.loadNpmTasks('grunt-less');
+  grunt.loadNpmTasks('grunt-css');
   
   // TODO: either use hamljs or jade
   grunt.registerTask('haml', 'Run haml on files', function() {
