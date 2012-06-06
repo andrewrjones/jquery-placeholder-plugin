@@ -102,6 +102,10 @@
     ok(! el.attr('autocomplete'));
   });
   
+  test("test set value", 1, function() {
+    ok("TODO: test setting a value programmatically");
+  });
+  
   test("test submit form", 1, function() {
     ok("TODO: test submiting a form, ensuring that the default placeholder is not sent through");
   });
