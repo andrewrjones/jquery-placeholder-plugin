@@ -58,10 +58,10 @@ module.exports = function(grunt) {
     csslint: {
       files: ['src/**/*.css']
     },
-    /*watch: {
+    watch: {
       files: '<config:lint.files>',
       tasks: 'lint qunit'
-    },*/
+    },
     jshint: {
       options: {
         curly: true,
