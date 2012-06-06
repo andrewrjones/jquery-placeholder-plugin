@@ -4,15 +4,22 @@
     <property name="VERSION" value="0.5" />
     
     <property environment="env"/>
-    <property name="BUILD_DIR" value="build" />
-    <property name="SOURCE_DIR" value="src" />
-    <property name="YUI_COMPRESSOR" value="${env.YUI_COMPRESSOR}" />
+    <property name="BUILD_DIR" value="${basedir}/build" />
+    <property name="SOURCE_DIR" value="${basedir}/src" />
+    <property name="EXT_DIR" value="${basedir}/ext" />
+    <property name="YUI_COMPRESSOR" value="${EXT_DIR}/yuicompressor/build/yuicompressor-2.4.8pre.jar" />
 
-    <target name="build" depends="clean, compile_haml, compile_scss, copy_bootstrap, bundle_css, compress_css, bundle_javascript, compress_javascript, copy_misc_files, zip" />
+    <target name="build" depends="compile_haml, compile_scss, copy_bootstrap, bundle_css, compress_css, bundle_javascript, compress_javascript, copy_misc_files, zip" />
 
     <target name="compile_haml">
         <echo>Compiling HTML Files From Haml...</echo>
-        <apply executable="haml" dest="${BUILD_DIR}">
+        <apply executable="haml.bat" dest="${BUILD_DIR}" osfamily="Windows">
+            <fileset dir="${SOURCE_DIR}" includes="*.haml"/>
+            <globmapper from="*.haml" to="*.htm"/>
+            <srcfile/>
+            <targetfile/>
+        </apply>
+        <apply executable="haml" dest="${BUILD_DIR}" osfamily="Unix">
             <fileset dir="${SOURCE_DIR}" includes="*.haml"/>
             <globmapper from="*.haml" to="*.htm"/>
             <srcfile/>
@@ -23,7 +30,13 @@
 
     <target name="compile_scss">
         <echo>Compiling CSS Files From SCSS...</echo>
-        <apply executable="sass" dest="${BUILD_DIR}">
+        <apply executable="sass.bat" dest="${BUILD_DIR}" osfamily="Windows">
+            <fileset dir="${SOURCE_DIR}" includes="*.scss"/>
+            <globmapper from="*.scss" to="*.css"/>
+            <srcfile/>
+            <targetfile/>
+        </apply>
+        <apply executable="sass" dest="${BUILD_DIR}" osfamily="Unix">
             <fileset dir="${SOURCE_DIR}" includes="*.scss"/>
             <globmapper from="*.scss" to="*.css"/>
             <srcfile/>
@@ -35,7 +48,7 @@
     <target name="copy_bootstrap">
         <echo>Copying Bootstrap...</echo>
         <concat destfile="${BUILD_DIR}/bootstrap.min.css">
-            <filelist dir="ext/bootstrap" files="bootstrap.min.css"/>
+            <filelist dir="${EXT_DIR}/bootstrap" files="bootstrap.min.css"/>
         </concat>
         <echo>Bootstrap Done</echo>
     </target>
@@ -100,7 +113,7 @@
 
     <target name="clean">
         <echo>Delete old build folder...</echo>
-        <delete dir="build"/>
+        <delete dir="${BUILD_DIR}"/>
         <echo>Create new build folder...</echo>
         <mkdir dir="${BUILD_DIR}"/>
     </target>

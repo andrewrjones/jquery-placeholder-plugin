@@ -1,3 +1,9 @@
+0.6 XX-06-2012
+  - Remove debug code
+  - "use strict"
+  - Add unit tests
+  - Use grunt for building
+
 0.5 31-01-2012
   - Update docs
 
