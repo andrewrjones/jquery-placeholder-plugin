@@ -37,12 +37,15 @@ module.exports = function(grunt) {
         dest: 'dist/index.min.css'
       }
     },
-    /*haml: {
-      index: {
-        src: "docs/index.haml",
-        dest: "dist/index.htm"
+    jade: {
+      html: {
+        src: ["src/index.jade"],
+        dest: "dist",
+        options: {
+          client: false
+        }
       }
-    },*/
+    },
     less: {
       index: {
         src: "src/index.less",
@@ -86,20 +89,11 @@ module.exports = function(grunt) {
   // Default task.
   grunt.registerTask('default', 'lint csslint qunit');
   
-  grunt.registerTask('dist', 'default haml less concat min cssmin copy');
+  grunt.registerTask('dist', 'default jade less concat min cssmin copy');
 
   grunt.loadNpmTasks('grunt-less');
   grunt.loadNpmTasks('grunt-css');
-  
-  // TODO: either use hamljs or jade
-  grunt.registerTask('haml', 'Run haml on files', function() {
-   var exec = require('child_process').exec,
-       child;
-
-   child = exec('haml.cmd src/index.haml dist/index.htm',
-     function (error, stdout, stderr) {
-   });
- });
+  grunt.loadNpmTasks('grunt-jade');
   
   // TODO: create generic copy task
   grunt.registerTask('copy', 'Copy misc files to dist', function() {

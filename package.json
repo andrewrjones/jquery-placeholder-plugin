@@ -27,7 +27,7 @@
   },
   "devDependencies": {
     "grunt": "~0.3",
-    "grunt-haml": "~0.1",
+    "grunt-jade": "*",
     "grunt-less": "*",
     "grunt-css": "*"
   },
