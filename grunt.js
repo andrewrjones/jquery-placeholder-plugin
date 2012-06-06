@@ -49,9 +49,9 @@ module.exports = function(grunt) {
         dest: "dist/index.css"
       }
     },
-    //qunit: {
-    //  files: ['test/**/*.html']
-    //},
+    qunit: {
+      files: ['test/**/*.html']
+    },
     lint: {
       files: ['grunt.js', 'src/**/*.js', 'test/**/*.js']
     },
@@ -84,7 +84,7 @@ module.exports = function(grunt) {
   });
 
   // Default task.
-  grunt.registerTask('default', 'lint csslint');
+  grunt.registerTask('default', 'lint csslint qunit');
   
   grunt.registerTask('dist', 'default haml less concat min cssmin copy');
 
