@@ -84,7 +84,7 @@ module.exports = function(grunt) {
   });
 
   // Default task.
-  grunt.registerTask('default', 'csslint');
+  grunt.registerTask('default', 'lint csslint');
   
   grunt.registerTask('dist', 'default haml less concat min cssmin copy');
 
