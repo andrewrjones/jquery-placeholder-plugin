@@ -4,3 +4,6 @@
 [submodule "ext/yuicompressor"]
 	path = ext/yuicompressor
 	url = https://github.com/yui/yuicompressor.git
+[submodule "ext/qunit"]
+	path = ext/qunit
+	url = git://github.com/jquery/qunit.git
