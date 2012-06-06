@@ -102,8 +102,19 @@
     ok(! el.attr('autocomplete'));
   });
   
-  test("test set value", 1, function() {
-    ok("TODO: test setting a value programmatically");
+  test("test set value", 2, function() {
+    var el = this["placeholder-text-foo"].placeholder({
+      overrideSupport: true
+    });
+    
+    // default value should be placeholder
+    strictEqual(el.attr('value'), 'foo');
+    
+    // set the value
+    el.val('bar');
+    
+    // value should now be bar
+    strictEqual(el.attr('value'), 'bar');
   });
   
   test("test submit form", 1, function() {
