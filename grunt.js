@@ -91,7 +91,7 @@ module.exports = function(grunt) {
   
   grunt.registerTask('dist', 'default jade less concat min cssmin copy');
 
-  grunt.loadNpmTasks('grunt-less');
+  grunt.loadNpmTasks('grunt-contrib-less');
   grunt.loadNpmTasks('grunt-css');
   grunt.loadNpmTasks('grunt-jade');
   
