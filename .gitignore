@@ -9,3 +9,4 @@ build
 .*redcar/
 dist
 node_modules
+jquery-placeholder-plugin*zip

@@ -31,6 +31,7 @@
     "grunt-bump": "*",
     "grunt-contrib-copy": "*",
     "grunt-contrib-clean": "*",
+    "grunt-contrib-compress": "~0.3.0",
     "grunt-contrib-less": "*",
     "grunt-css": "*"
   },

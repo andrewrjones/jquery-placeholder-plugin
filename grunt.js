@@ -77,6 +77,17 @@ module.exports = function(grunt) {
         }
       }
     },
+    compress: {
+      zip: {
+        options: {
+          mode: "zip",
+          rootDir: "jquery-placeholder-plugin"
+        },
+        files: {
+          "jquery-placeholder-plugin-<%= pkg.version %>.zip": ["dist/**"]
+        }
+      }
+    },
     clean: ['dist'],
     jshint: {
       options: {
@@ -107,6 +118,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-less');
   grunt.loadNpmTasks('grunt-contrib-copy');
   grunt.loadNpmTasks('grunt-contrib-clean');
+  grunt.loadNpmTasks('grunt-contrib-compress');
   grunt.loadNpmTasks('grunt-bump');
   grunt.loadNpmTasks('grunt-css');
   grunt.loadNpmTasks('grunt-jade');
