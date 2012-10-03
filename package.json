@@ -29,6 +29,7 @@
     "grunt": "~0.3",
     "grunt-jade": "*",
     "grunt-bump": "*",
+    "grunt-beautify": "*",
     "grunt-contrib-copy": "*",
     "grunt-contrib-clean": "*",
     "grunt-contrib-compress": "~0.3.0",

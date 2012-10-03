@@ -1,15 +1,11 @@
 /*global module:false, require:false*/
-module.exports = function(grunt) {
+module.exports = function (grunt) {
 
   // Project configuration.
   grunt.initConfig({
     pkg: '<json:package.json>',
     meta: {
-      banner: '/*! <%= pkg.title || pkg.name %> - v<%= pkg.version %> - ' +
-        '<%= grunt.template.today("yyyy-mm-dd") %>\n' +
-        '<%= pkg.homepage ? "* " + pkg.homepage + "\n" : "" %>' +
-        '* Copyright (c) <%= grunt.template.today("yyyy") %> <%= pkg.author.name %>;' +
-        ' Licensed <%= _.pluck(pkg.licenses, "type").join(", ") %> */'
+      banner: '/*! <%= pkg.title || pkg.name %> - v<%= pkg.version %> - ' + '<%= grunt.template.today("yyyy-mm-dd") %>\n' + '<%= pkg.homepage ? "* " + pkg.homepage + "\n" : "" %>' + '* Copyright (c) <%= grunt.template.today("yyyy") %> <%= pkg.author.name %>;' + ' Licensed <%= _.pluck(pkg.licenses, "type").join(", ") %> */'
     },
     concat: {
       dist: {
@@ -58,6 +54,9 @@ module.exports = function(grunt) {
     lint: {
       files: ['grunt.js', 'src/**/*.js', 'test/**/*.js']
     },
+    beautify: {
+      files: '<config:lint.files>'
+    },
     csslint: {
       files: ['src/**/*.css']
     },
@@ -71,9 +70,7 @@ module.exports = function(grunt) {
           flatten: true
         },
         files: {
-          'dist/': [
-            'CHANGES', 'LICENSE', 'README', 'ext/bootstrap/bootstrap.min.css'
-          ]
+          'dist/': ['CHANGES', 'LICENSE', 'README', 'ext/bootstrap/bootstrap.min.css']
         }
       }
     },
@@ -112,7 +109,7 @@ module.exports = function(grunt) {
 
   // Default task.
   grunt.registerTask('default', 'lint csslint qunit');
-  
+
   grunt.registerTask('dist', 'default jade less concat min cssmin copy');
 
   grunt.loadNpmTasks('grunt-contrib-less');
@@ -122,4 +119,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-bump');
   grunt.loadNpmTasks('grunt-css');
   grunt.loadNpmTasks('grunt-jade');
+  grunt.loadNpmTasks('grunt-beautify');
+
+  grunt.registerTask('tidy', 'beautify');
 };
