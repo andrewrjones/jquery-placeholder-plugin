@@ -28,6 +28,7 @@
   "devDependencies": {
     "grunt": "~0.3",
     "grunt-jade": "*",
+    "grunt-contrib-copy": "*",
     "grunt-contrib-less": "*",
     "grunt-css": "*"
   },
