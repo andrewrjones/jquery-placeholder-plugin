@@ -1,3 +1,5 @@
+  - Add note about password fields
+
 0.6 06-06-2012
   - Remove debug code
   - "use strict"
