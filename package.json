@@ -29,6 +29,7 @@
     "grunt": "~0.3",
     "grunt-jade": "*",
     "grunt-contrib-copy": "*",
+    "grunt-contrib-clean": "*",
     "grunt-contrib-less": "*",
     "grunt-css": "*"
   },
