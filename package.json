@@ -2,7 +2,7 @@
   "name": "jquery.placeholder",
   "title": "jQuery Placeholder Plugin",
   "description": "Simple jQuery plugin that adds support for the placeholder attribute in all browsers",
-  "version": "0.6.0",
+  "version": "0.6.1",
   "homepage": "http://andrew-jones.com/jquery-placeholder-plugin",
   "author": {
     "name": "Andrew Jones",
