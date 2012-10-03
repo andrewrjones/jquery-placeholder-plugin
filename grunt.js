@@ -107,6 +107,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-less');
   grunt.loadNpmTasks('grunt-contrib-copy');
   grunt.loadNpmTasks('grunt-contrib-clean');
+  grunt.loadNpmTasks('grunt-bump');
   grunt.loadNpmTasks('grunt-css');
   grunt.loadNpmTasks('grunt-jade');
 };

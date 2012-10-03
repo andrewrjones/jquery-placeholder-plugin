@@ -28,6 +28,7 @@
   "devDependencies": {
     "grunt": "~0.3",
     "grunt-jade": "*",
+    "grunt-bump": "*",
     "grunt-contrib-copy": "*",
     "grunt-contrib-clean": "*",
     "grunt-contrib-less": "*",
