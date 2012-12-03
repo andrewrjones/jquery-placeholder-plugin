@@ -74,8 +74,7 @@
     var element1 = '#placeholder-text-value-foo';
     var element2 = '#placeholder-text-value-bar';
 
-    $('#issue5').find(element1).val(value)
-                .end().find(element2).val(value);
+    $('#issue5').find(element1).val(value).end().find(element2).val(value);
 
     strictEqual($(element1).val(), value, element1 + ' not equal to ' + value);
     strictEqual($(element2).val(), value, element2 + ' not equal to ' + value);
