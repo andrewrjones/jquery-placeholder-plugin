@@ -68,6 +68,19 @@
     ok(el.hasClass(focusClass));
   });
 
+  // https://github.com/andrewrjones/jquery-placeholder-plugin/issues/5
+  test("test issue 5", 2, function () {
+    var value = 'test';
+    var element1 = '#placeholder-text-value-foo';
+    var element2 = '#placeholder-text-value-bar';
+
+    $('#issue5').find(element1).val(value)
+                .end().find(element2).val(value);
+
+    strictEqual($('#placeholder-text-value-foo').val(), value, element2 + ' not equal to ' + value);
+    strictEqual($(element2).val(), value, element2 + ' not equal to ' + value);
+  });
+
   test("test no placeholder", 2, function () {
     var el = this["no-placeholder"].placeholder({
       overrideSupport: true
