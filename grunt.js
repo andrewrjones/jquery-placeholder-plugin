@@ -108,9 +108,9 @@ module.exports = function (grunt) {
   });
 
   // Default task.
-  grunt.registerTask('default', 'lint csslint qunit');
+  grunt.registerTask('default', 'lint csslint beautify qunit');
 
-  grunt.registerTask('dist', 'default jade less concat min cssmin copy');
+  grunt.registerTask('dist', 'default jade less concat min cssmin copy compress');
 
   grunt.loadNpmTasks('grunt-contrib-less');
   grunt.loadNpmTasks('grunt-contrib-copy');
