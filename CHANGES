@@ -1,3 +1,6 @@
+0.7.0 03-12-2012
+  - Ensure .val() works correctly. Fixes https://github.com/andrewrjones/jquery-placeholder-plugin/issues/5.
+
 0.6.1 03-10-2012
   - Add note about password fields
   - Code tidy

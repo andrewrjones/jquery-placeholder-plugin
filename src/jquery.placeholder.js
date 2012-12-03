@@ -19,24 +19,23 @@
   // Replace the val function to never return placeholders
   $.fn.plVal = $.fn.val;
   $.fn.val = function (value) {
-    if (this[0]) {
+    if (typeof value === 'undefined') {
+      return $.fn.plVal.call(this);
+    } else {
       var el = $(this[0]);
-      if (value !== undefined) {
-        var currentValue = el.plVal();
-        var returnValue = $(this).plVal(value);
-        if (el.hasClass($.placeholder.settings.activeClass) && currentValue === el.attr('placeholder')) {
-          el.removeClass($.placeholder.settings.activeClass);
-        }
+      var currentValue = el.plVal();
+      var returnValue = $(this).plVal(value);
+      if (el.hasClass($.placeholder.settings.activeClass) && currentValue === el.attr('placeholder')) {
+        el.removeClass($.placeholder.settings.activeClass);
         return returnValue;
       }
 
       if (el.hasClass($.placeholder.settings.activeClass) && el.plVal() === el.attr('placeholder')) {
         return '';
-      } else {
-        return el.plVal();
       }
+
+      return $.fn.plVal.call(this, value);
     }
-    return undefined;
   };
 
   // Clear placeholder values upon page reload
