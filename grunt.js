@@ -7,6 +7,9 @@ module.exports = function (grunt) {
     meta: {
       banner: '/*! <%= pkg.title || pkg.name %> - v<%= pkg.version %> - ' + '<%= grunt.template.today("yyyy-mm-dd") %>\n' + '<%= pkg.homepage ? "* " + pkg.homepage + "\n" : "" %>' + '* Copyright (c) <%= grunt.template.today("yyyy") %> <%= pkg.author.name %>;' + ' Licensed <%= _.pluck(pkg.licenses, "type").join(", ") %> */'
     },
+    server: {
+        port: 8085
+    },
     concat: {
       dist: {
         src: ['<banner>', '<file_strip_banner:src/<%= pkg.name %>.js>'],
@@ -49,7 +52,9 @@ module.exports = function (grunt) {
       }
     },
     qunit: {
-      files: ['test/**/*.html']
+      urls: ['1.9.0', '2.0.0b1'].map(function(version) {
+        return 'http://localhost:<%= server.port %>/test/jquery.emailaddressmunging.html?jquery=' + version;
+      })
     },
     lint: {
       files: ['grunt.js', 'src/**/*.js', 'test/**/*.js']
@@ -109,7 +114,7 @@ module.exports = function (grunt) {
 
   // Default task.
   grunt.registerTask('default', 'lint csslint beautify qunit');
-
+  grunt.registerTask('test', 'server lint qunit');
   grunt.registerTask('dist', 'default jade less concat min cssmin copy compress');
 
   grunt.loadNpmTasks('grunt-contrib-less');
