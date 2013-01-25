@@ -36,5 +36,8 @@
     "grunt-contrib-less": "*",
     "grunt-css": "*"
   },
+  "scripts": {
+    "test": "grunt test"
+  },
   "keywords": []
 }
