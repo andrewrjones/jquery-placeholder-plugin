@@ -4,3 +4,6 @@
 [submodule "ext/qunit"]
 	path = ext/qunit
 	url = git://github.com/jquery/qunit.git
+[submodule "ext/jquery-loader"]
+	path = ext/jquery-loader
+	url = git://github.com/andrewrjones/simple-jquery-loader.git
