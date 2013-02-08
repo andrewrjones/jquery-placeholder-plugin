@@ -8,7 +8,7 @@ module.exports = function (grunt) {
       banner: '/*! <%= pkg.title || pkg.name %> - v<%= pkg.version %> - ' + '<%= grunt.template.today("yyyy-mm-dd") %>\n' + '<%= pkg.homepage ? "* " + pkg.homepage + "\n" : "" %>' + '* Copyright (c) <%= grunt.template.today("yyyy") %> <%= pkg.author.name %>;' + ' Licensed <%= _.pluck(pkg.licenses, "type").join(", ") %> */'
     },
     server: {
-        port: 8085
+      port: 8085
     },
     concat: {
       dist: {
@@ -52,7 +52,7 @@ module.exports = function (grunt) {
       }
     },
     qunit: {
-      urls: ['1.9.0', '2.0.0b1'].map(function(version) {
+      urls: ['1.9.0', '2.0.0b1'].map(function (version) {
         return 'http://localhost:<%= server.port %>/test/jquery.emailaddressmunging.html?jquery=' + version;
       })
     },
@@ -90,6 +90,21 @@ module.exports = function (grunt) {
         }
       }
     },
+    // secret.json contains the host, username and password for a server to
+    // scp to
+    secret: '<json:secret.json>',
+    sftp: {
+      deploy: {
+        files: {
+          "./": "jquery-placeholder-plugin-<%= pkg.version %>.zip"
+        },
+        options: {
+          host: '<%= secret.host %>',
+          username: '<%= secret.username %>',
+          password: '<%= secret.password %>'
+        }
+      }
+    },
     clean: ['dist'],
     jshint: {
       options: {
@@ -115,7 +130,8 @@ module.exports = function (grunt) {
   // Default task.
   grunt.registerTask('default', 'lint csslint beautify qunit');
   grunt.registerTask('test', 'server lint qunit');
-  grunt.registerTask('dist', 'default jade less concat min cssmin copy compress');
+  grunt.registerTask('dist', 'jade less concat min cssmin copy compress');
+  grunt.registerTask('deploy', 'dist sftp');
 
   grunt.loadNpmTasks('grunt-contrib-less');
   grunt.loadNpmTasks('grunt-contrib-copy');
@@ -125,6 +141,7 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks('grunt-css');
   grunt.loadNpmTasks('grunt-jade');
   grunt.loadNpmTasks('grunt-beautify');
+  grunt.loadNpmTasks('grunt-ssh');
 
   grunt.registerTask('tidy', 'beautify');
 };
