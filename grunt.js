@@ -69,6 +69,18 @@ module.exports = function (grunt) {
       files: '<config:lint.files>',
       tasks: 'lint qunit'
     },
+    replace: {
+      dist: {
+        options: {
+          variables: {
+            'version': '<%= pkg.version %>'
+          }
+        },
+        files: {
+          'dist/': ['dist/index.html']
+        }
+      }
+    },
     copy: {
       dist: {
         options: {
@@ -130,7 +142,7 @@ module.exports = function (grunt) {
   // Default task.
   grunt.registerTask('default', 'lint csslint beautify qunit');
   grunt.registerTask('test', 'server lint qunit');
-  grunt.registerTask('dist', 'jade less concat min cssmin copy compress');
+  grunt.registerTask('dist', 'jade less concat min cssmin copy compress replace:dist');
   grunt.registerTask('deploy', 'dist sftp');
 
   grunt.loadNpmTasks('grunt-contrib-less');
@@ -142,6 +154,7 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks('grunt-jade');
   grunt.loadNpmTasks('grunt-beautify');
   grunt.loadNpmTasks('grunt-ssh');
+  grunt.loadNpmTasks('grunt-replace');
 
   grunt.registerTask('tidy', 'beautify');
 };
