@@ -155,8 +155,8 @@ module.exports = function (grunt) {
   grunt.registerTask('default', 'lint csslint beautify qunit');
   grunt.registerTask('test', 'server lint qunit');
   grunt.registerTask('build', 'jade less concat min cssmin copy');
-  grunt.registerTask('dist', 'build compress replace:dist');
-  grunt.registerTask('deploy', 'build compress replace:deploy replace:dist sftp');
+  grunt.registerTask('dist', 'build replace:dist compress');
+  grunt.registerTask('deploy', 'build replace:deploy replace:dist compress sftp');
 
   grunt.loadNpmTasks('grunt-contrib-less');
   grunt.loadNpmTasks('grunt-contrib-copy');
