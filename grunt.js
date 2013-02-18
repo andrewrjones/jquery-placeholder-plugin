@@ -53,7 +53,7 @@ module.exports = function (grunt) {
     },
     qunit: {
       urls: ['1.9.1', '2.0.0b1'].map(function (version) {
-        return 'http://localhost:<%= server.port %>/test/jquery.emailaddressmunging.html?jquery=' + version;
+        return 'http://localhost:<%= server.port %>/test/jquery.placeholder.html?jquery=' + version;
       })
     },
     lint: {
@@ -74,7 +74,7 @@ module.exports = function (grunt) {
         options: {
           variables: {
             'version': '<%= pkg.version %>',
-            'piwik' : ''
+            'piwik': ''
           }
         },
         files: {
@@ -84,7 +84,7 @@ module.exports = function (grunt) {
       deploy: {
         options: {
           variables: {
-            'piwik' : '<%= grunt.file.read("includes/piwik.html") %>'
+            'piwik': '<%= grunt.file.read("includes/piwik.html") %>'
           }
         },
         files: {
