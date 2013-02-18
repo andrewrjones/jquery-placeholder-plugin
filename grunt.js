@@ -52,7 +52,7 @@ module.exports = function (grunt) {
       }
     },
     qunit: {
-      urls: ['1.9.0', '2.0.0b1'].map(function (version) {
+      urls: ['1.9.1', '2.0.0b1'].map(function (version) {
         return 'http://localhost:<%= server.port %>/test/jquery.emailaddressmunging.html?jquery=' + version;
       })
     },
