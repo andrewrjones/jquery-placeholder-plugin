@@ -35,7 +35,7 @@
     "grunt-contrib-compress": "~0.3.0",
     "grunt-contrib-less": "*",
     "grunt-css": "*",
-    "grunt-ssh": "git://github.com/andrewrjones/grunt-ssh.git",
+    "grunt-ssh": "*",
     "grunt-replace" : "*"
   },
   "scripts": {
