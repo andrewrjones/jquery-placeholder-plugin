@@ -73,7 +73,18 @@ module.exports = function (grunt) {
       dist: {
         options: {
           variables: {
-            'version': '<%= pkg.version %>'
+            'version': '<%= pkg.version %>',
+            'piwik' : ''
+          }
+        },
+        files: {
+          'dist/': ['dist/index.html']
+        }
+      },
+      deploy: {
+        options: {
+          variables: {
+            'piwik' : '<%= grunt.file.read("includes/piwik.html") %>'
           }
         },
         files: {
@@ -142,8 +153,9 @@ module.exports = function (grunt) {
   // Default task.
   grunt.registerTask('default', 'lint csslint beautify qunit');
   grunt.registerTask('test', 'server lint qunit');
-  grunt.registerTask('dist', 'jade less concat min cssmin copy compress replace:dist');
-  grunt.registerTask('deploy', 'dist sftp');
+  grunt.registerTask('build', 'jade less concat min cssmin copy');
+  grunt.registerTask('dist', 'build compress replace:dist');
+  grunt.registerTask('deploy', 'build compress replace:deploy replace:dist sftp');
 
   grunt.loadNpmTasks('grunt-contrib-less');
   grunt.loadNpmTasks('grunt-contrib-copy');
