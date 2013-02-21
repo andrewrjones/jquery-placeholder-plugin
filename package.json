@@ -26,17 +26,23 @@
     "jquery": "~1.5"
   },
   "devDependencies": {
-    "grunt": "~0.3",
-    "grunt-jade": "*",
-    "grunt-bump": "*",
-    "grunt-beautify": "*",
-    "grunt-contrib-copy": "*",
-    "grunt-contrib-clean": "*",
-    "grunt-contrib-compress": "~0.3.0",
-    "grunt-contrib-less": "*",
-    "grunt-css": "*",
-    "grunt-ssh": "*",
-    "grunt-replace" : "*"
+    "grunt": "~0.4.0",
+    "grunt-contrib-jade": "*",
+    "grunt-bump": "~0.0.2",
+    "grunt-beautify": "git://github.com/terryweiss/grunt-beautify.git#FixForGrunt040",
+    "grunt-contrib-copy": "~0.4.0",
+    "grunt-contrib-clean": "0.4.0",
+    "grunt-contrib-jshint": "0.1.1",
+    "grunt-contrib-qunit": "0.1.1",
+    "grunt-contrib-clean": "0.4.0",
+    "grunt-contrib-compress": "~0.4.0",
+    "grunt-contrib-concat": "~0.1.2",
+    "grunt-contrib-connect": "~0.1.2",
+    "grunt-contrib-uglify": "~0.1.2",
+    "grunt-contrib-less": "~0.5.0*",
+    "grunt-contrib-cssmin": "*",
+    "grunt-ssh": "~0.2.0",
+    "grunt-replace" : "git://github.com/outaTiME/grunt-replace.git"
   },
   "scripts": {
     "test": "grunt test"

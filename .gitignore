@@ -10,4 +10,5 @@ build
 dist
 node_modules
 jquery-placeholder-plugin*zip
+*.swp
 secret.json
