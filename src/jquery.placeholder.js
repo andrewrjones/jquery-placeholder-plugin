@@ -53,7 +53,7 @@
 
     // we don't have to do anything if the browser supports placeholder
     if (!opts.overrideSupport && $.support.placeholder) {
-      //return this;
+      return this;
     }
 
     return this.each(function () {
