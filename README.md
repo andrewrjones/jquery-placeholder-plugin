@@ -10,5 +10,18 @@ Extra attention has been paid to make sure that elements behave correctly when u
 * Programmatically changing a placeholder element with .val('string') will remove the placeholder class
 * With .placeholder({preventRefreshIssues:true}) a placeholder will be assigned autocomplete="off" to prevent browsers from filling an element with the placeholder text on refresh
 
+
+## Usage
+
+```javascript
+$(function(){
+  $('input[placeholder], textarea[placeholder]').placeholder();
+});
+```
+
+Easy.
+
+## Note
+
 Initially forked from https://github.com/andrewrjones/jquery-placeholder-plugin/downloads
 
