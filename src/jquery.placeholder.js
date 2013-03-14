@@ -82,7 +82,8 @@
         if (this.value == $el.attr('placeholder') && $el.hasClass(opts.activeClass)) $el.val('').removeClass(opts.activeClass).addClass(opts.focusClass);
 		  if ($el.hasClass(opts.passwordClass)){
 			$el.removeClass(opts.passwordClass);
-			$el.attr('type', 'password');
+			$el.get().type = 'password';
+
 		  }
       });
       $el.bind('blur.placeholder', function() {
@@ -97,7 +98,8 @@
 			$el.val($el.attr('placeholder')).addClass(opts.activeClass);
 			if ($el.is(':password')){
 				$el.addClass(opts.passwordClass);
-				$el.attr('type', 'text');
+				$el.get().type = 'text';
+
 			}
 		}
       });
