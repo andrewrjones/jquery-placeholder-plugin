@@ -1,3 +1,7 @@
+/*! jQuery Placeholder Plugin - v0.7.0 - 2012-12-03
+* http://andrew-jones.com/jquery-placeholder-plugin
+* Copyright (c) 2012 Andrew Jones; Licensed MIT */
+
 (function ($) {
   "use strict";
 
@@ -19,19 +23,22 @@
   // Replace the val function to never return placeholders
   $.fn.plVal = $.fn.val;
   $.fn.val = function (value) {
+      var el;
     if (typeof value === 'undefined') {
+      el = $(this[0]);
+
+      if (el.hasClass($.placeholder.settings.activeClass) && el.plVal() === el.attr('placeholder')) {
+        return '';
+      }
+
       return $.fn.plVal.call(this);
     } else {
-      var el = $(this[0]);
+      el = $(this[0]);
       var currentValue = el.plVal();
       var returnValue = $(this).plVal(value);
       if (el.hasClass($.placeholder.settings.activeClass) && currentValue === el.attr('placeholder')) {
         el.removeClass($.placeholder.settings.activeClass);
         return returnValue;
-      }
-
-      if (el.hasClass($.placeholder.settings.activeClass) && el.plVal() === el.attr('placeholder')) {
-        return '';
       }
 
       return $.fn.plVal.call(this, value);
