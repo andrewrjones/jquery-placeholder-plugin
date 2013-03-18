@@ -17,7 +17,7 @@
     strictEqual(this.elems.placeholder(), this.elems, 'should be chaninable');
   });
 
-  test("test default", 10, function () {
+  test("test default", 14, function () {
     var el = this["placeholder-text-foo"].placeholder({
       overrideSupport: true
     });
@@ -42,6 +42,19 @@
 
     strictEqual(el.attr('value'), 'foo');
     ok(el.hasClass('placeholder'));
+    ok(!el.hasClass('placeholderFocus'));
+
+    // now set the value to something else
+    el.val('bar');
+
+    strictEqual(el.attr('value'), 'bar');
+    console.log(el.attr('class'));
+    ok(!el.hasClass('placeholder'));
+
+    // and clear it again
+    el.val('');
+
+    strictEqual(el.attr('value'), '');
     ok(!el.hasClass('placeholderFocus'));
   });
 
