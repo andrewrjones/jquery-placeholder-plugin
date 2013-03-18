@@ -1,3 +1,6 @@
+0.7.1 18-03-2013
+  - Fix issue with .val() returning back the placeholder value (#12) [rogerhu].
+
 0.7.0 03-12-2012
   - Ensure .val() works correctly. Fixes https://github.com/andrewrjones/jquery-placeholder-plugin/issues/5.
 
