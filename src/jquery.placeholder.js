@@ -1,7 +1,3 @@
-/*! jQuery Placeholder Plugin - v0.7.0 - 2012-12-03
-* http://andrew-jones.com/jquery-placeholder-plugin
-* Copyright (c) 2012 Andrew Jones; Licensed MIT */
-
 (function ($) {
   "use strict";
 
@@ -23,7 +19,7 @@
   // Replace the val function to never return placeholders
   $.fn.plVal = $.fn.val;
   $.fn.val = function (value) {
-      var el;
+    var el;
     if (typeof value === 'undefined') {
       el = $(this[0]);
 
