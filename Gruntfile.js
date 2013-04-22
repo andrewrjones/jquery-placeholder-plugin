@@ -9,7 +9,9 @@ module.exports = function (grunt) {
     },
     connect: {
       server: {
-        port: 8085
+        options: {
+          port: 8085
+        }
       }
     },
     concat: {
@@ -65,7 +67,7 @@ module.exports = function (grunt) {
       all: {
         options: {
           urls: ['1.9.1', '2.0.0b1'].map(function (version) {
-            return 'http://localhost:<%= connect.server.port %>/test/jquery.placeholder.html?jquery=' + version;
+            return 'http://localhost:<%= connect.server.options.port %>/test/jquery.placeholder.html?jquery=' + version;
           })
         }
       }
