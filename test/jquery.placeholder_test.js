@@ -48,7 +48,6 @@
     el.val('bar');
 
     strictEqual(el.attr('value'), 'bar');
-    console.log(el.attr('class'));
     ok(!el.hasClass('placeholder'));
 
     // and clear it again
