@@ -27,6 +27,7 @@
   },
   "devDependencies": {
     "grunt": "~0.4.0",
+    "grunt-cli": "~0.1",
     "grunt-contrib-jade": "*",
     "grunt-bump": "~0.0.2",
     "grunt-beautify": "git://github.com/terryweiss/grunt-beautify.git#FixForGrunt040",
