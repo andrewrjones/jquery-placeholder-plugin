@@ -48,12 +48,13 @@
     el.val('bar');
 
     strictEqual(el.attr('value'), 'bar');
+    console.log(el.attr('class'));
     ok(!el.hasClass('placeholder'));
 
     // and clear it again
     el.val('');
 
-    strictEqual(el.attr('value'), 'foo');
+    strictEqual(el.attr('value'), '');
     ok(!el.hasClass('placeholderFocus'));
   });
 
