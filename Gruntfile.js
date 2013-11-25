@@ -66,7 +66,7 @@ module.exports = function (grunt) {
     qunit: {
       all: {
         options: {
-          urls: ['1.9.1', '1.10.0', '2.0.1'].map(function (version) {
+          urls: ['1.9.1', '1.10.0', '1.11.0-beta2', '2.0.1', '2.1.0-beta2'].map(function (version) {
             return 'http://localhost:<%= connect.server.options.port %>/test/jquery.placeholder.html?jquery=' + version;
           })
         }
