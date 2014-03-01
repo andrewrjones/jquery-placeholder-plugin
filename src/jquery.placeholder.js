@@ -90,7 +90,7 @@
         $el.removeClass(opts.focusClass);
 
         if (this.value === '') {
-          $el.val($el.attr('placeholder')).addClass(opts.activeClass);
+          $($el.val($el.attr('placeholder'))).addClass(opts.activeClass);
         }
       });
 
