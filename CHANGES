@@ -1,0 +1,48 @@
+0.7.2 01-03-2014
+  - Fixed IE 7 issue (#16) [streetdragon].
+
+0.7.1 18-03-2013
+  - Fix issue with .val() returning back the placeholder value (#12) [rogerhu].
+
+0.7.0 03-12-2012
+  - Ensure .val() works correctly. Fixes https://github.com/andrewrjones/jquery-placeholder-plugin/issues/5.
+
+0.6.1 03-10-2012
+  - Add note about password fields
+  - Code tidy
+
+0.6 06-06-2012
+  - Remove debug code
+  - "use strict"
+  - Add unit tests
+  - Use grunt for building
+
+0.5 31-01-2012
+  - Update docs
+
+0.4 28-01-2011
+  - Rename files to be consistent with other jQuery plugins.
+    Eg: jquery-placeholder-plugin-min.js to jquery.placeholder.min.js
+
+0.3 28-01-2011
+This release brings in Mal Curtis' work from https://github.com/snikch/jquery-placeholder-plugin/. Each of the changes in this version are attributed to him (which means he has probably wrote more of the code than I have ;-)
+
+  [Setting Changes]
+  - 'blurClass' has been renamed to 'activeClass'
+  - 'activeClass' has been renamed to 'focusClass'
+  
+  [Enhancements]
+  - 'preventRefreshIssues' optional setting added to prevent Firefox from auto filling values on refresh, by turning autocomplete off. Defaults to true
+  
+  [Bug Fixes]
+  - If the value is actually set to the same as the placeholder, it's still considered a placeholder
+  - Refresh in firefox pre fills the input field with the placeholder
+  - Val() function returns the placeholder, not an empty string
+  - Submitting a form would submit the placeholder value
+  - Changing the value of an element with a placeholder via val('string') will removed the placeholder class
+
+0.2 24-01-2011
+  - Doc updates
+
+0.1 25-08-2010
+  - Inital version
