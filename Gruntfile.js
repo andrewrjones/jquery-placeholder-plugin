@@ -91,6 +91,28 @@ module.exports = function (grunt) {
         }
       }
     },
+    clean: ['dist', '*zip'],
+    jshint: {
+      options: {
+        curly: true,
+        eqeqeq: true,
+        immed: true,
+        latedef: true,
+        newcap: true,
+        noarg: true,
+        sub: true,
+        undef: true,
+        boss: true,
+        eqnull: true,
+        browser: true,
+        globals: {
+          jQuery: true
+        }
+      },
+      files: {
+        src: ['Gruntfile.js', 'src/**/*.js', 'test/**/*.js']
+      }
+    },
     copy: {
       dist: {
         options: {
