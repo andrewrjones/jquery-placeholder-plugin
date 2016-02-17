@@ -83,22 +83,11 @@ module.exports = function (grunt) {
       dist: {
         options: {
           variables: {
-            'version': '<%= pkg.version %>',
-            'piwik': ''
+            'version': '<%= pkg.version %>'
           }
         },
         files: {
-          'dist/': ['dist/index.html']
-        }
-      },
-      deploy: {
-        options: {
-          variables: {
-            'piwik': '<%= grunt.file.read("includes/piwik.html") %>'
-          }
-        },
-        files: {
-          'dist/': ['dist/index.html']
+          'dist/index.html': ['dist/index.html']
         }
       }
     },
@@ -130,44 +119,6 @@ module.exports = function (grunt) {
           src: ["**"]
         }]
       }
-    },
-    // secret.json contains the host, username and password for a server to
-    // scp to
-    secret: grunt.file.readJSON('secret.json'),
-    sftp: {
-      deploy: {
-        files: {
-          "./": "jquery-placeholder-plugin-<%= pkg.version %>.zip"
-        },
-        options: {
-          host: '<%= secret.host %>',
-          username: '<%= secret.username %>',
-          password: '<%= secret.password %>',
-          path: '<%= secret.path %>'
-        }
-      }
-    },
-    clean: ['dist', '*zip'],
-    jshint: {
-      options: {
-        curly: true,
-        eqeqeq: true,
-        immed: true,
-        latedef: true,
-        newcap: true,
-        noarg: true,
-        sub: true,
-        undef: true,
-        boss: true,
-        eqnull: true,
-        browser: true,
-        globals: {
-          jQuery: true
-        }
-      },
-      files: {
-        src: ['Gruntfile.js', 'src/**/*.js', 'test/**/*.js']
-      }
     }
   });
 
@@ -176,7 +127,6 @@ module.exports = function (grunt) {
   grunt.registerTask('test', ['connect', 'jshint', 'qunit']);
   grunt.registerTask('build', ['jade', 'less', 'concat', 'uglify', 'cssmin', 'copy']);
   grunt.registerTask('dist', ['build', 'replace:dist', 'compress']);
-  grunt.registerTask('deploy', ['build', 'replace:deploy', 'replace:dist', 'compress', 'sftp']);
 
   grunt.loadNpmTasks('grunt-contrib-less');
   grunt.loadNpmTasks('grunt-contrib-watch');
@@ -192,7 +142,6 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-jade');
   grunt.loadNpmTasks('grunt-beautify');
-  grunt.loadNpmTasks('grunt-ssh');
   grunt.loadNpmTasks('grunt-replace');
 
   grunt.registerTask('tidy', 'beautify');
